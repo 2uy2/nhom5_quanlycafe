@@ -185,7 +185,7 @@ function App() {
         <header className="topbar">
           <div>
             <p className="eyebrow">PB01 - Quản lý menu</p>
-            <h1>Menu luôn đúng giá, đúng thông tin, sẵn sàng bán.</h1>
+            <h1>Dashboard</h1>
           </div>
           <div className="topbar-actions">
             <button className="button secondary" type="button" onClick={resetForm}>
