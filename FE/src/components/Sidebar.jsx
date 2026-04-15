@@ -7,7 +7,7 @@ function Sidebar() {
         <div className="brand-mark">SC</div>
         <div>
           <strong>Smart Cafe</strong>
-          <span>Operations Hub</span>
+          <span>Giao diện admin</span>
         </div>
       </div>
 
