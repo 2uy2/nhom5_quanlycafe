@@ -11,22 +11,6 @@ Dự án của nhánh `QuangHieu`: giao diện ReactJS và backend Express + MyS
 - Xem chi tiết món.
 - Lưu dữ liệu menu trong MySQL.
 
-## Chức năng backend đã thêm
-
-Backend trong thư mục `BE` được làm đơn giản để phục vụ phần giao diện quản lý menu:
-
-- Kết nối MySQL bằng thông tin trong file `.env`.
-- Tạo database `smart_cafe` và bảng `menu_items`.
-- Thêm sẵn một số món mẫu để frontend có dữ liệu hiển thị.
-- API kiểm tra kết nối database.
-- API lấy danh sách món.
-- API xem chi tiết một món.
-- API thêm món mới.
-- API cập nhật thông tin món.
-- API xóa món.
-- Kiểm tra dữ liệu đầu vào cơ bản như tên món, giá, danh mục và trạng thái.
-- Trả thông báo lỗi nếu thiếu dữ liệu hoặc không tìm thấy món.
-
 ## Công nghệ sử dụng
 
 - Frontend: ReactJS, Vite, CSS.
@@ -38,51 +22,11 @@ Backend trong thư mục `BE` được làm đơn giản để phục vụ phầ
 
 ```text
 nhom5_quanlycafe/
-|-- BE/
-|   |-- database/
-|   |   `-- schema.sql              # File SQL tạo database, bảng và dữ liệu mẫu
-|   |-- src/
-|   |   |-- config/
-|   |   |   `-- db.js               # Cấu hình kết nối MySQL
-|   |   |-- controllers/
-|   |   |   `-- menuController.js   # Xử lý logic thêm, sửa, xóa, lấy món
-|   |   |-- routes/
-|   |   |   `-- menuRoutes.js       # Khai báo các API /api/menu
-|   |   |-- scripts/
-|   |   |   `-- setupDatabase.js    # Script tạo database bằng npm run db:setup
-|   |   `-- server.js               # File chạy server Express
-|   |-- .env.example                # Mẫu cấu hình biến môi trường
-|   |-- package.json                # Lệnh chạy và thư viện backend
-|   |-- package-lock.json
-|   `-- README.md                   # Hướng dẫn riêng cho backend
-|-- FE/
-|   |-- src/
-|   |   |-- components/
-|   |   |   |-- DetailDrawer.jsx     # Khung xem chi tiết món
-|   |   |   |-- MenuForm.jsx         # Form thêm và cập nhật món
-|   |   |   |-- MenuPreview.jsx      # Khu vực xem trước món đang chọn
-|   |   |   |-- MenuTable.jsx        # Bảng danh sách món
-|   |   |   |-- Sidebar.jsx          # Thanh menu bên trái
-|   |   |   `-- StatsStrip.jsx       # Các ô thống kê nhanh
-|   |   |-- data/
-|   |   |   `-- menuSeed.js          # Dữ liệu mẫu dự phòng cho frontend
-|   |   |-- services/
-|   |   |   `-- menuStore.js         # Hàm gọi API backend
-|   |   |-- utils/
-|   |   |   `-- menuHelpers.js       # Hàm xử lý định dạng tiền, trạng thái
-|   |   |-- App.jsx                  # Giao diện chính
-|   |   |-- main.jsx                 # Điểm khởi chạy React
-|   |   `-- styles.css              # CSS toàn bộ giao diện
-|   |-- index.html
-|   |-- package.json                # Lệnh chạy và thư viện frontend
-|   |-- package-lock.json
-|   |-- README.md                   # Hướng dẫn riêng cho frontend
-|   `-- vite.config.js              # Cấu hình Vite và proxy API
-|-- .gitignore
-`-- README.md
+├── FE/                 # Giao diện ReactJS
+├── BE/                 # Backend Express + MySQL
+├── README.md
+└── .gitignore
 ```
-
-Ghi chú: `node_modules/`, `dist/` và file `.env` không đưa lên GitHub nên không liệt kê trong cây thư mục.
 
 ## Cấu hình MySQL
 
