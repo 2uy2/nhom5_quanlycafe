@@ -20,7 +20,7 @@ npm start
 
 ## 3️⃣ Kiểm Tra Ứng Dụng Hoạt Động
 
-✅ Nếu thấy giao diện với header "☕ Quản Lý Đơn Hàng" → **Thành công!**
+✅ Nếu thấy giao diện với header " Quản Lý Đơn Hàng" → **Thành công!**
 
 ## 4️⃣ Tính Năng Để Test
 
