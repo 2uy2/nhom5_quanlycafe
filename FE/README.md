@@ -2,6 +2,8 @@
 
 Giao diện ReactJS cho chức năng quản lý menu quán cà phê.
 
+Phần này dùng để hiển thị màn hình admin và thao tác quản lý món.
+
 ## Chạy frontend
 
 ```bash
