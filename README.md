@@ -2,6 +2,8 @@
 
 Dự án của nhánh `QuangHieu`: giao diện ReactJS và backend Express + MySQL cho chức năng **PB01 - Quản lý menu**.
 
+README này tóm tắt chức năng, cấu trúc thư mục và cách chạy dự án.
+
 ## Chức năng đã làm
 
 - Hiển thị danh sách món trong menu.
