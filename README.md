@@ -10,7 +10,3 @@ npm install
 npm run dev
 ```
 
-## Ghi chú repo
-
-//Testtruycap
-hihi
