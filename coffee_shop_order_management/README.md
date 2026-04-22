@@ -1,4 +1,4 @@
-# ☕ Hệ Thống Quản Lý Đơn Hàng Quán Cafe Thông Minh
+#  Hệ Thống Quản Lý Đơn Hàng Quán Cafe Thông Minh
 
 ## Giới Thiệu
 Ứng dụng web xây dựng với **React.js** để quản lý đơn hàng cho hệ thống quán cafe thông minh. Hệ thống cho phép quản lý đơn hàng (tạo, cập nhật, hủy) và theo dõi trạng thái xử lý đơn hàng theo thời gian thực.
