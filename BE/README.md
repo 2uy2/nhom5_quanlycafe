@@ -2,6 +2,8 @@
 
 Backend Express + MySQL đơn giản cho chức năng quản lý menu.
 
+Phần này dùng để kết nối MySQL và cung cấp API cho giao diện frontend.
+
 ## Cấu hình MySQL
 
 File `.env`:
