@@ -11,10 +11,15 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (_req, res) => {
-  res.json({
-    message: "Smart Cafe Backend đang chạy.",
-    docs: "/api/health",
-  });
+  res.send(`
+    <h1>Smart Cafe Backend đang chạy</h1>
+    <p>Đây là server API, không phải giao diện.</p>
+    <ul>
+      <li>Giao diện React: <a href="http://localhost:5173">http://localhost:5173</a></li>
+      <li>Kiểm tra database: <a href="/api/health">/api/health</a></li>
+      <li>Danh sách menu: <a href="/api/menu">/api/menu</a></li>
+    </ul>
+  `);
 });
 
 app.get("/api/health", async (_req, res, next) => {

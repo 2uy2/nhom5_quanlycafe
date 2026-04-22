@@ -1,64 +1,70 @@
-import { initialMenuItems, MENU_STORAGE_KEY } from "../data/menuSeed";
+const apiBaseUrl = "/api/menu";
 
-function readMenuItems() {
-  const storedItems = localStorage.getItem(MENU_STORAGE_KEY);
-
-  if (!storedItems) {
-    localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(initialMenuItems));
-    return initialMenuItems;
-  }
-
-  try {
-    return JSON.parse(storedItems);
-  } catch {
-    localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(initialMenuItems));
-    return initialMenuItems;
-  }
+function normalizeMenuItem(item) {
+  return {
+    id: item.id,
+    name: item.name,
+    price: Number(item.price),
+    category: item.category,
+    status: item.status,
+    description: item.description || "",
+    image: item.image || item.imageUrl || "",
+    updatedAt: item.updatedAt || item.updated_at || new Date().toISOString(),
+  };
 }
 
-function persistMenuItems(items) {
-  localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(items));
+function toApiPayload(payload) {
+  return {
+    name: payload.name,
+    price: Number(payload.price),
+    category: payload.category,
+    status: payload.status,
+    description: payload.description,
+    imageUrl: payload.image,
+  };
 }
 
-const wait = (payload) =>
-  new Promise((resolve) => {
-    window.setTimeout(() => resolve(payload), 260);
+async function requestJson(url, options) {
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    ...options,
   });
+
+  if (!response.ok) {
+    const errorBody = await response.json().catch(() => ({}));
+    throw new Error(errorBody.message || "Không thể kết nối backend.");
+  }
+
+  return response.json();
+}
 
 export const menuStore = {
   async getMenuItems() {
-    return wait(readMenuItems());
+    const items = await requestJson(apiBaseUrl);
+    return items.map(normalizeMenuItem);
   },
 
   async createMenuItem(payload) {
-    const items = readMenuItems();
-    const newItem = {
-      ...payload,
-      id: `MN-${String(Date.now()).slice(-5)}`,
-      price: Number(payload.price),
-      updatedAt: new Date().toISOString(),
-    };
-    const nextItems = [newItem, ...items];
-    persistMenuItems(nextItems);
-    return wait(newItem);
+    const newItem = await requestJson(apiBaseUrl, {
+      method: "POST",
+      body: JSON.stringify(toApiPayload(payload)),
+    });
+    return normalizeMenuItem(newItem);
   },
 
   async updateMenuItem(id, payload) {
-    const items = readMenuItems();
-    const updatedItem = {
-      ...payload,
-      id,
-      price: Number(payload.price),
-      updatedAt: new Date().toISOString(),
-    };
-    const nextItems = items.map((item) => (item.id === id ? updatedItem : item));
-    persistMenuItems(nextItems);
-    return wait(updatedItem);
+    const updatedItem = await requestJson(`${apiBaseUrl}/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(toApiPayload(payload)),
+    });
+    return normalizeMenuItem(updatedItem);
   },
 
   async deleteMenuItem(id) {
-    const items = readMenuItems();
-    persistMenuItems(items.filter((item) => item.id !== id));
-    return wait({ id });
+    return requestJson(`${apiBaseUrl}/${id}`, {
+      method: "DELETE",
+    });
   },
 };
