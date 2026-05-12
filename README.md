@@ -1,4 +1,4 @@
-# ☕ Quản Lý Quán Cà Phê - Tin Coffee
+# ☕ Quản Lý Quán Cà Phê 
 
 Đồ án xây dựng hệ thống quản lý quán cà phê (Fullstack).
 
